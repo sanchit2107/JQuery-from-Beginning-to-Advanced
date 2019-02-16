@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JQuery- Beginning to Advanced</title>
+</head>
+
+<script src="js/jquery.js"></script>
+
+<script>
+	$("document").ready(function(){
+
+		$("body").append("<h1>I LOVE JQuery!! </h1> ");
+	});
+
+	$("document").ready(function(){
+
+		// ON MOUSE CLICK AND LEAVE - EVENTS HANDLING
+		$("#textbox").on("click", function mouseOnClick(){
+
+				$("#textbox").html("<h1> You Clicked me</h1>");
+		});
+
+		$("#textbox").on("mouseleave", function mouseOnLeave(){
+
+				$("#textbox").html("<h1> Where are u goin ?? </h1>");
+		});
+
+		// HIDE AND SHOW ON CLICK
+		$("#show").on("click", function(){
+			$("#textbox2").show();
+		});
+		$("#hide").on("click", function(){
+			$("#textbox2").hide();
+		});
+
+		// HOVER EFFECTS
+		$(".textclass").hover(highClass);
+		function highClass(){
+			$(this).toggleClass("highlight");
+		}
+
+		// FADE IN/OUT on click
+		$("#fade-in").on("click", function(){
+			$(".fadebox").fadeIn(3000, function(){
+				alert("We are done with Fading IN");
+			});
+
+		});
+		$("#fade-out").on("click", function(){
+			$(".fadebox").fadeOut("fast", function(){
+				alert("We are done with Fading OUT");
+			});
+			
+		});
+
+		// SLIDE Effect on CLICK
+		$("#slide-up").click(function(){
+			$(".slidebox").slideUp("3000", "linear");
+		});
+		$("#slide-down").click(function(){
+			$(".slidebox").slideDown("3000", "linear");
+		});
+		$("#slide-toggle").click(function(){
+			$(".slidebox").slideToggle("2000", function(){
+				alert("DONE!!!!");
+			});
+		});
+
+		// ANIMATION in JQuery
+		$("#grow").click(function(){
+			$("#animatebox").animate({width:"500px"}, 2000); 
+		});
+		$("#move").click(function(){
+			$("#animatebox").animate({marginLeft: "200px"}, 2000); 
+		});
+		$("#bigger").click(function(){
+			$("#animatebox").animate({fontSize: "35px", marginLeft: "250px", marginTop: "100px", width: "800px"}, 1000); 
+		}); 
+
+
+		// SELECTORS
+		$("h5").css("border", "1px dotted red");
+		$("#blue").css("border", "2px solid blue");
+		$(".green").css("border", "3px solid green");
+
+		// FILTERS
+		$(".filter p:first").css("border", "1px solid blue");
+		$(".filter p:last").css("border", "1px solid blue");
+		$(".filter p:odd").css("background", "#c6c6c6");
+		$(".filter p:even").css("background", "#ff0000");
+
+		// ADVANCE SELECTORS
+		$("div > p.firstClass").css("border", "1px solid blue");
+
+
+		// CONTENT CREATION
+		$(".content1 p:first-child").css("fontSize", "24px" );
+		$(".content1 p:parent").css("background", "pink" );
+		$(".content1 p:last-of-type").css("fontFamily", "cursive" );
+		$(".content1 p:contains('sanchit')").css("background", "red" );
+		$(".content2 p:nth-child(2)").css("background", "blue" );
+		$(".content2 p#firstpara").text("This was replaced");
+		var newText = $(".content2 p:second");
+		$(".content2 p#last").html(newText);
+
+		
+	});
+
+
+	$("document").ready(function(){
+		
+		// INSERT CONTENT
+		$("#append").click(function(){
+			$(".insert p:first").append("HELLO!!! I'm here appending the content at the end..!!");
+		});
+		$("#prepend").click(function(){
+			$(".insert p:last").prepend("HELLO!!! I'm here prepending the content in begenning..!!");
+		});
+
+
+		// MODIFYING CONTENT
+		$("#modify p:first").wrap("<div class='colorBox'>");
+		$("#modify p:last").replaceWith("<div>I'm replaced by someone</div>");
+
+		// MODIFY CSS
+		$("#add-class").click(function(){
+			$(".modify-css p:first").addClass('color');
+		});
+		$("#remove-class").click(function(){
+			$(".modify-css p:first").removeClass('color');
+		});
+		$("#toggle-class").click(function(){
+			$(".modify-css p:first").toggleClass('color');
+		});
+		$("#fontsize").click(function(){
+			$(".modify-css p:last").css("font-size", "+=1px");
+		});
+		
+	});
+
+
+</script>
+
+<style type="text/css">
+	#textbox{
+		background: blue;
+		width: 300px;
+		height: 200px;
+
+	}
+
+	.highlight{
+		background: red;
+	}
+
+
+	#animatebox{
+		background-color: #ccc;
+		width: 200px;
+		height: 400px;
+		position: absolute;
+		margin-top: 70px;
+	}
+
+	.colorBox{
+		color: #cccccc;
+	}
+
+
+	.color{
+		color:skyblue;
+	}
+
+</style>
+<body>
+	<div id="textbox">
+		
+	</div>
+
+
+<br><br>
+
+	<!-- SHOW/HIDE Effects -->
+	<a href="#show" id="show">Click to Show</a> || <a href="#hide" id="hide">CLick to hide</a>
+	<div id="textbox2" style="display: none;">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+
+	<!-- HOVER EFFECTS -->
+	<p class="textclass">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<br><br>
+
+	
+
+	<!-- FADE IN/OUT effects on click -->
+	<a href="#fade-in" id="fade-in">FADE IN</a>  ||  <a href="#fade-out" id="fade-out">FADE OUT</a>
+	<div class="fadebox" style="display: none;">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laboru.</p>
+	</div>
+
+<br><br> 
+	<!-- SLIDE Operations -->
+	<a href="#slide-up" id="slide-up">SLIDE UP</a>  ||  <a href="#slide-down" id="slide-down">SLIDE DOWN</a>  || <a href="#slide-toggle" id="slide-toggle">SLIDE TOGGLE</a>
+	<div class="slidebox">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</div>
+
+<br><br>
+	<!-- ANIMATIONS in JQuery -->
+	<a href="#grow" id="grow">GROW</a> || <a href="#move" id="move">MOVE</a>  ||   <a href="#bigger" id="bigger">BIGGER</a>
+	<div id="animatebox">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<br>
+	</div>
+<br><br>
+
+	<!-- SELCTORS -->
+	<div>
+	<h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.lo</h5>
+
+	<h5 id="blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.lo</h5>
+
+	<h5 class="green">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.lo</h5>
+	</div>
+
+
+	<!-- FILTERS -->
+	<div class="filter">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+	</div>
+
+
+	<!-- Advance SELECTORS -->
+<br><br><br>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+	<div>
+		<p class="firstClass">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+	</div>
+
+	<!-- Creating Content -->
+	<h4>CONTENT1</h4>
+	<div class="content1">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut sanchit et dolore magna aliqua. </p>
+	</div>
+	<br>
+	<h4>CONTENT2</h4>
+	<div class="content2">
+		<p id="firstpara"> 11111 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+		<p> 22222 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+		<p>33333 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+	</div>
+
+	<!-- INSERTING CONTENT -->
+	<br><br>
+	<a href="#append" id="append">APPEND</a>
+	<a href="#prepend" id="prepend">PREPEND</a>
+	<div class="insert">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. </p>
+	</div>
+	<br><br>
+	<!-- MODIFYING CONTENT -->
+
+	<div id="modify">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua.</p>
+	</div>
+
+
+	<!-- MODIFYING CSS  -->
+	<div class="modify-css">
+		<br>
+		<a href="#add-class" id="add-class">ADD CSS</a>  ||    <a href="#remove-class" id="remove-class">REMOVE CSS</a>   ||    <a href="#toggle-class" id="toggle-class">TOGGLE CSS</a>     ||     <a href="#fontsize" id="fontsize">CHANGE SIZE</a>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua.</p>
+	</div>
+</body>
+</html>
